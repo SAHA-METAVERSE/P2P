@@ -55,6 +55,31 @@
         </div>
       
 <script>
+
+
+var bnNumbers = {
+    '0': '০',
+    '1': '১',
+    '2': '২',
+    '3': '৩',
+    '4': '৪',
+    '5': '৫',
+    '6': '৬',
+    '7': '৭',
+    '8': '৮',
+    '9': '৯'
+};
+
+String.prototype.getBnDigit = function () {
+    var str = this;
+    for (var x in bnNumbers) {
+        str = str.replace(new RegExp(x, 'g'), bnNumbers[x]);
+    }
+    return str;
+};
+
+
+
 function Calculations(){
 
   let _PER_VORI_PRICE =document.getElementById("PER_VORI_PRICE").value;
@@ -109,10 +134,22 @@ M.toast({html: '১ থেকে ১0 এর মধ্যকার সংখ্�
   let Per_Gm = _PER_VORI_PRICE/960;
   let Calculate =Number((960*_VORI)+(60*_ANA)+(10*_ROTI)+(_POINT));
   let Cal = Math.round(Calculate*Per_Gm);
-  
-document.getElementById("Points").innerHTML = "স্বর্ণের পরিমান " +Calculate +" পয়েন্ট ";
-document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ";
-M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ", classes: 'rounded'});
+  let V_Text = _VORI.toString().getBnDigit()+" ভরি ";
+  let A_Text = _ANA.toString().getBnDigit()+" আনা ";
+  let R_Text = _ROTI.toString().getBnDigit()+" রতি ";
+  let P_Text = _POINT.toString().getBnDigit()+" পয়েন্ট ";
+
+
+  if(_VORI==0){  V_Text = ""; }
+  if(_ANA==0){ A_Text=""; }
+  if(_ROTI==0){ R_Text=""; }
+  if(_POINT==0){ P_Text=""; }
+
+ 
+
+document.getElementById("Points").innerHTML = "স্বর্ণের পরিমান " +Calculate.toString().getBnDigit() +" পয়েন্ট ";
+document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" মোট স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ";
+M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ", classes: 'rounded'});
 }
 
 }
