@@ -65,17 +65,23 @@ function Calculations(){
 //  let len = document.getElementById("PER_VORI_PRICE");
 if (_PER_VORI_PRICE == "") {
 
-  document.getElementById("PER_VORI_PRICE").focus();
+document.getElementById("PER_VORI_PRICE").focus();
 M.toast({html: 'প্রতি ভরি স্বর্ণের দাম ইনপুট দিন', classes: 'rounded'});
 
 //  block of code to be executed if the condition1 is false and condition2 is true
-} else if (_VORI<0 ||_VORI =="") {
+} else if (_VORI =="" && _ANA =="" && _ROTI =="" && _POINT =="") {
+
+  // document.getElementById("PER_VORI_PRICE").focus();
+M.toast({html: ' স্বর্ণের যে কোন পরিমান বসান ', classes: 'rounded'});
+
+//  block of code to be executed if the condition1 is false and condition2 is true
+} else if (_VORI<0 ) {
   document.getElementById("VORI").value="";
   document.getElementById("VORI").focus ();
 M.toast({html: 'ভরির পরিমানটা বসান', classes: 'rounded'});
 
   //  block of code to be executed if condition1 is true
-} else if (_ANA<0 || _ANA>16 ||_ANA =="") {
+} else if (_ANA<0 || _ANA>16 ) {
 
   document.getElementById("ANA").value="";
   document.getElementById("ANA").focus ();
@@ -83,14 +89,14 @@ M.toast({html: 'ভরির পরিমানটা বসান', classes: 'r
 M.toast({html: '১ থেকে ১৬ এর মধ্যকার সংখ্যাগুলো ইনপুট দিন', classes: 'rounded'});
 
   //  block of code to be executed if the condition1 is false and condition2 is true
-} else if (_ROTI<0 || _ROTI>6 ||_ROTI =="") {
+} else if (_ROTI<0 || _ROTI>6 ) {
 
   document.getElementById("ROTI").value="";
   document.getElementById("ROTI").focus();
 M.toast({html: '১ থেকে ৬ এর মধ্যকার অঙ্কগুলো ইনপুট দিন', classes: 'rounded'});
 
   //  block of code to be executed if the condition1 is false and condition2 is true
-} else if (_POINT<0 || _POINT>10 ||_POINT =="") {
+} else if (_POINT<0 || _POINT>10 ) {
 
   document.getElementById("POINT").value="";
   document.getElementById("POINT").focus();
@@ -101,6 +107,8 @@ M.toast({html: '১ থেকে ১0 এর মধ্যকার সংখ্�
   //  block of code to be executed if the condition1 is false and condition2 is false
   let Per_Gm = _PER_VORI_PRICE/960;
   let Cal =Math.round(Number((960*_VORI)+(60*_ANA)+(10*_ROTI)+(_POINT))*Per_Gm);
+  
+
   document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ";
 M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ", classes: 'rounded'});
 }
