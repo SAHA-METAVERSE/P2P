@@ -50,6 +50,7 @@
           </div>
           </form>
           </div>
+          <h4 id="Points"></h4>
           <h5 id="Result"></h5>
         </div>
       
@@ -58,7 +59,7 @@ function Calculations(){
 
   let _PER_VORI_PRICE =document.getElementById("PER_VORI_PRICE").value;
   let _VORI =Number(document.getElementById("VORI").value);
-  let _ANA =document.getElementById("ANA").value;
+  let _ANA =Number( document.getElementById("ANA").value);
   let _ROTI =Number( document.getElementById("ROTI").value);
   let _POINT =Number( document.getElementById("POINT").value);
  
@@ -106,10 +107,11 @@ M.toast({html: '১ থেকে ১0 এর মধ্যকার সংখ্�
 } else {
   //  block of code to be executed if the condition1 is false and condition2 is false
   let Per_Gm = _PER_VORI_PRICE/960;
-  let Cal =Math.round(Number((960*_VORI)+(60*_ANA)+(10*_ROTI)+(_POINT))*Per_Gm);
+  let Calculate =Number((960*_VORI)+(60*_ANA)+(10*_ROTI)+(_POINT));
+  let Cal = Math.round(Calculate*Per_Gm);
   
-
-  document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ";
+document.getElementById("Points").innerHTML = "স্বর্ণের পরিমান " +Calculate +" পয়েন্ট ";
+document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ";
 M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE+' টাকা হয় ,তবে '+_VORI+" ভরি "+_ANA+" আনা "+_ROTI+" রতি "+_POINT+" পয়েন্ট স্বর্ণের দাম হবে "+Cal+" টাকা ", classes: 'rounded'});
 }
 
