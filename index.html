@@ -54,6 +54,8 @@
           <h5 id="Result"></h5>
         </div>
       
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
 
 
@@ -147,9 +149,15 @@ M.toast({html: '১ থেকে ১0 এর মধ্যকার সংখ্�
 
  
 
-document.getElementById("Points").innerHTML = "স্বর্ণের পরিমান " +Calculate.toString().getBnDigit() +" পয়েন্ট ";
-document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" মোট স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ";
-M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ", classes: 'rounded'});
+document.getElementById("Points").innerHTML = "মোট স্বর্ণের পরিমান " +Calculate.toString().getBnDigit() +" পয়েন্ট ";
+document.getElementById("Result").innerHTML = 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ";
+// M.toast({html: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ", classes: 'rounded'});
+Swal.fire({
+  icon: "success",
+  title: "মোট স্বর্ণের পরিমান " +Calculate.toString().getBnDigit() +" পয়েন্ট ",
+  text: 'যদি প্রতি ভরি স্বর্ণের দাম '+_PER_VORI_PRICE.toString().getBnDigit()+' টাকা হয় ,তবে '+V_Text+A_Text+R_Text+P_Text+" স্বর্ণের দাম হবে "+Cal.toString().getBnDigit()+" টাকা ",
+  footer: '<a href="https://www.facebook.com/Jonisaha2012/">Developed By JoniSaha</a>'
+});
 }
 
 }
